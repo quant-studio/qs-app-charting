@@ -1,0 +1,19 @@
+<div class="app-dropdown">
+	<div class="dropdown-header" ng-if="loading">
+		<span class="fa fa-spin fa-spinner"></span>
+	</div>
+	<div class="dropdown-header" ng-if="!loading" ng-click="toggle()">
+		<span style="float:right;"><span class="fas fa-caret-down"></span></span>
+		<span><span class="fas {{selected().iconClass}}" ng-if="selected().iconClass"></span> {{selected().label}}</span>
+	</div>
+	<div class="dropdown-container" ng-if="showDropdown">
+		<div>
+			<div ng-repeat="item in list" ng-class="{active:item[labelProperty]==selected().label}" ng-click="select(item)">
+				<a>
+					<span class="fas {{item.iconClass}}" ng-if="item.iconClass"></span>
+					{{item[labelProperty]}}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

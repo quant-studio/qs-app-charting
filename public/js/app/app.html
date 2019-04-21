@@ -1,0 +1,118 @@
+<div>
+	
+	
+	<div class="app-charts">
+		<div class="chart-tabs">
+			<div class="tab hover-menu">
+				<div class="icon" ng-click="box.defaultBox.settingsBox()">
+					<span class="fas fa-bars"></span>
+				</div>
+				<div class="hover-menu-container">
+					<div>
+						<div class="arrow"></div>
+						<div class="menu">
+							<div ng-click="box.defaultBox.aboutBox()">
+								<span class="fas fa-sync"></span> About
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab" ng-repeat="tab in app.tabs.tabs" ng-click="tabs.select(tab)" ng-class="{selected:tabs.is(tab.id)}">
+				<span class="fas fa-chart-area"></span>
+				<span ng-if="!tab.editMode" ng-dblclick="tab.editMode=true">{{tab.label}}</span>
+				<span ng-if="!tab.editMode" class="del" ng-click="tabs.remove(tab)"><span class="fas fa-times"></span></span>
+				<input ng-if="tab.editMode" type="text" ng-model="tab.label" ng-enter="tabs.edit(tab, false)" placeholder="Tab name" />
+			</div>
+			<div class="tab" ng-click="tabs.create()">
+				<span class="fas fa-plus"></span>
+			</div>
+		</div>
+		
+		<div id="container" style="height:100%;"></div>
+		
+		<div class="chart-controls">
+			<div class="control" ng-repeat="plot in app.charts[app.tabs.selected.id].plots" style="top:{{plot.bounds.top+20+tabs.height}}px;" ng-if="plot.bounds">
+				<div circle-menu="chart.menu" data="plot"></div>
+			</div>
+		</div>
+		
+		<div class="chart-drop" ng-if="app.charts[app.tabs.selected.id].plots.length>0">
+			<div class="drop" ng-repeat="plot in app.charts[app.tabs.selected.id].plots" plot="{{plot.id}}" style="top:{{plot.bounds.top+tabs.height}}px;height:{{plot.bounds.height-5}}px;" ng-if="plot.bounds"></div>
+			
+			<div class="drop add" plot="-1" style="top:{{tabs.height+app.charts[app.tabs.selected.id].plots[app.charts[app.tabs.selected.id].plots.length-1].bounds.top+app.charts[app.tabs.selected.id].plots[app.charts[app.tabs.selected.id].plots.length-1].bounds.height}}px;height:50px;" ng-if="app.charts[app.tabs.selected.id].plots[app.charts[app.tabs.selected.id].plots.length-1]">
+				<span>
+					<span class="fas fa-plus"></span>
+				</span>
+			</div>
+		</div>
+		<div class="chart-drop" ng-if="!app.charts[app.tabs.selected.id].plots || app.charts[app.tabs.selected.id].plots.length==0">
+			<div class="drop add" plot="-1" style="top:0;height:100%;">
+				<span>
+					<span class="fas fa-plus"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Drag Add To Chart -->
+	<div class="app-dialog" ng-if="dialog.status['drag-chart']" ng-class="{front:dialog.front=='drag-chart'}">
+		<div class="bg"></div>
+		<div class="overlay medium">
+			<div>
+				<div class="dialog-close" ng-click="dialog.close('drag-chart')">
+					Close <span class="fas fa-times"></span>
+				</div>
+				<div class="app-dialog-box">
+					<div class="header">
+						How do you want to display your data?
+					</div>
+					<div class="chart-types-selector">
+						<div ng-repeat="type in chart.dragChartTypes" ng-class="{selected:chart.dragBuffer.type==type.value}" ng-click="chart.addDragChart(type.value, dialog.payload['drag-chart'])">
+							<div>
+								<img ng-src="/images/chart-types/{{type.value}}.png" alt="{{type.label}}" />
+								<div>
+									<div>{{type.label}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--
+					<div class="body">
+						<div class="footer" ng-click="chart.addDragChart()" ng-class="{disabled:!chart.isDragChartValid()}">
+							<span class="fas fa-plus"></span> Add
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Plot Settings Editor -->
+	<div class="app-dialog" ng-if="dialog.status['edit-plot']" ng-class="{front:dialog.front=='edit-plot'}">
+		<div class="bg"></div>
+		<div class="overlay form">
+			<div>
+				<div class="dialog-close" ng-click="dialog.close('edit-plot')">
+					Close <span class="fas fa-times"></span>
+				</div>
+				<div plot-editor="dialog.payload['edit-plot']"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Chart Settings Editor -->
+	<div class="app-dialog" ng-if="dialog.status['edit-chart']" ng-class="{front:dialog.front=='edit-chart'}">
+		<div class="bg"></div>
+		<div class="overlay form">
+			<div>
+				<div class="dialog-close" ng-click="dialog.close('edit-chart')">
+					Close <span class="fas fa-times"></span>
+				</div>
+				<div chart-editor="dialog.payload['edit-chart']"></div>
+			</div>
+		</div>
+	</div>
+</div>

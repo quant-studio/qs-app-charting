@@ -1,0 +1,17 @@
+{
+	"name": "anystock",
+	"version": "8.3.0",
+	"dependencies":	{
+		"ftl-framework":		"latest"
+	},
+	"main": [
+		"anychart-base.min.js",
+		"dark_blue.min.js",
+		"anychart-ui.min.js",
+		"anychart-exports.min.js",
+		"anychart-stock.min.js",
+		"anychart-sparkline.min.js",
+		"anychart-ui.min.css",
+		"anychart-font.min.css"
+	]
+}

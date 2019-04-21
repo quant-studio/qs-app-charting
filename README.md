@@ -1,1 +1,1 @@
-# qs-app-charting
+# Quant Studio Chart App

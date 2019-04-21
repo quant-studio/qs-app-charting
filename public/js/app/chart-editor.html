@@ -1,0 +1,16 @@
+<div>
+	<div class="app-dialog-box">
+		<div class="header">
+			{{chartEditor.chart.data.name}}
+		</div>
+		<div class="body">
+			<div app-form="chart.defaultForm" values="chartEditor.chart.settings"></div>
+			<!--<pre>{{chartEditor.chart.settings|json}}</pre>-->
+			<div app-form="chartEditor.chart.data.inputs" values="chartEditor.chart.settings"></div>
+			<div app-form="chartEditor.chart.data.type.inputs" values="chartEditor.chart.settings"></div>
+			<div class="footer" ng-click="dialog.close('edit-chart')">
+				<span class="fas fa-check"></span> Done
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<span class="ui-color">
+	<div class="ui-color-preview" ng-click="ui.toggle()" style="background-color:{{ui.getPreviewColor()}};"></div>
+	<div class="ui-color-picker-container">
+		<div class="ui-color-dropdown" ng-if="ui.visible">
+			<material-picker id="{{ui.id}}" ng-model="ui.buffer" format="'hex'" hover-model="ui.hoverColor" size="ui.size"></material-picker>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</span>

@@ -1,0 +1,22 @@
+﻿<div>
+	<div class="ui-tags">
+		<span class="tag" ng-repeat="item in uiTags" style="margin:2px;">
+			{{item.label}}
+			<span class="action" ng-click="ui.remove(item)"><span class="fas fa-times"></span></span>
+		</span>
+		<input type="text" ng-model="ui.buffer" ng-enter="ui.create()" />
+		<div class="ui-list" ng-if="ui.showList">
+			<div>
+				<div ng-repeat="item in list" ng-click="ui.add(item)" ng-if="!uiTags[item.label.toLowerCase()]">
+					{{item.label}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--<pre>{{list|json}}</pre>
+	
+	<pre>{{uiTags|json}}</pre>
+	<pre>{{list|json}}</pre>
+	<pre>{{ui|json}}</pre>
+	-->
+</div>

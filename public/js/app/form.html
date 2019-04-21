@@ -1,0 +1,36 @@
+<div>
+	<div class="app-form">
+		<div ng-repeat="line in appForm" ng-if="!line.visibility||(line.visibility&&line.visibility(values))">
+			<div>
+				{{line.label}}
+				<span class="help" tooltip-placement="right" uib-tooltip="{{line.help}}" ng-if="line.help">
+					<span class="fas fa-question-circle"></span>
+				</span>
+			</div>
+			<div>
+				<!--
+				<input type="text" ng-model="values[line.name]" placeholder="value" ng-if="line.type=='input'" />
+				<input type="password" ng-model="values[line.name]" placeholder="value" ng-if="line.type=='password'" />
+				<input type="number" ng-model="values[line.name]" placeholder="value" ng-if="line.type=='number'" />
+				<input type="number" ng-model="values[line.name]" placeholder="value" ng-if="line.type=='int'" />
+				<input type="number" ng-model="values[line.name]" placeholder="value" ng-if="line.type=='float'" />
+				<span ng-if="line.type=='list'" ui-dropdown="{{line.name}}" data="values" options="line.list"></span>
+				<span ng-if="line.type=='color'" ui-color="values[line.name]">
+					--{{values[line.name]}}--
+				</span>
+				-->
+				<div ui-input="line" value="values[line.name]" ng-if="line.type!='data'"></div>
+				
+				<div class="data-selector" ng-if="!core.overWriteDataBehavior && line.type=='data'" ng-click="form.selectData(line, values[line.name])">
+					<span ng-if="values[line.name]">
+						{{values[line.name]}}
+					</span>
+					<span ng-if="!values[line.name]">
+						Select the source
+					</span>
+				</div>
+				<span ng-if="core.overWriteDataBehavior && line.type=='data'" ui-dropdown="{{line.name}}" data="values" options="core.overWriteDataBehavior"></span>
+			</div>
+		</div>
+	</div>
+</div>

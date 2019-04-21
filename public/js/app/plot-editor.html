@@ -1,0 +1,102 @@
+<div>
+	<div class="app-dialog-box">
+		<div class="header">
+			Plot
+		</div>
+		<div class="tabs">
+			<div class="tab" ng-click="tabs.select('charts')" ng-class="{selected:tabs.is('charts')}">
+				Charts
+			</div>
+			<div class="tab" ng-click="tabs.select('events')" ng-class="{selected:tabs.is('events')}">
+				Events 
+			</div>
+			<!--<div class="tab" ng-click="tabs.select('plot')" ng-class="{selected:tabs.is('plot')}">
+				Plot
+			</div>-->
+		</div>
+		
+		
+		<!-- Charts -->
+		<div class="body" ng-if="tabs.is('charts')">
+			
+			<div class="table-list">
+				<div>
+					<div ng-repeat="chart in plotEditor.plot.charts">
+						<div ng-click="editor.editChart(chart)">
+							{{chart.settings.name}}
+						</div>
+						<div ng-click="editor.editChart(chart)">
+							{{chart.data.name}}
+						</div>
+						<div class="icon" ng-click="editor.removeChart(chart)" ng-if="editor.canRemoveChart(chart)">
+							<div class="tiny-btn red"><span class="fas fa-ban"></span></div>
+						</div>
+					</div>
+				</div>
+				<!--
+				<div>
+					<div>
+						<div class="center" ng-click="editor.addChart()">
+							<span class="fas fa-plus"></span> Add a new chart
+						</div>
+					</div>
+				</div>
+				-->
+			</div>
+			<div class="footer" ng-click="dialog.close('edit-plot')">
+				<span class="fas fa-check"></span> Done
+			</div>
+		</div>
+		
+		
+		<!-- Events -->
+		<div class="body" ng-if="tabs.is('events')">
+			
+			<!--<div app-form="editor.eventForm" values="plotEditor.plot"></div>-->
+			
+			<div class="table-list">
+				<div>
+					<div ng-repeat="event in plotEditor.plot.events">
+						<div ng-click="editor.editEvent(event)">
+							{{event.label}}
+						</div>
+						<div ng-click="editor.editEvent(event)">
+							{{event.marker.bgColor}}
+						</div>
+						<div class="icon" ng-click="editor.removeEvent(event)">
+							<div class="tiny-btn red"><span class="fas fa-ban"></span></div>
+						</div>
+					</div>
+				</div>
+				<!--
+				<div>
+					<div>
+						<div class="center" ng-click="editor.addEvent()">
+							<span class="fas fa-plus"></span> Add a new event
+						</div>
+					</div>
+				</div>
+				-->
+			</div>
+			
+			
+			<!--<pre>{{plotEditor|json}}</pre>-->
+			
+			<div class="footer" ng-click="dialog.close('edit-plot')">
+				<span class="fas fa-check"></span> Done
+			</div>
+		</div>
+		
+		
+		<div class="body" ng-if="tabs.is('plot')">
+			<div app-form="editor.form" values="plotEditor.settings"></div>
+			<div class="footer" ng-click="dialog.close('edit-plot')">
+				<span class="fas fa-check"></span> Done
+			</div>
+		</div>
+		
+		
+		
+	</div>
+	
+</div>

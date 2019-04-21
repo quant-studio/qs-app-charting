@@ -1,0 +1,10 @@
+{
+	"name": "material-colors",
+	"version": "1.0.0",
+	"main": [
+		"ui.bootstrap.materialPicker.js"
+	],
+	"dependencies":	{
+		"jquery":		"latest"
+	}
+}

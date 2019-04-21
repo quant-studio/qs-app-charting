@@ -1,0 +1,16 @@
+<div class="menu-circle">
+	<div class="btn-round master">
+		<div>
+			<div>
+				<span class="{{circleMenu.icon}}"></span>
+			</div>
+		</div>
+	</div>
+	<div class="btn-round child" ng-repeat="item in circleMenu.children" ng-if="!item.ngIf || (item.ngIf && item.ngIf())" style="background-color:{{item.color}};left:{{ui.getPosition($index+1).x|number:0}}px;top:{{ui.getPosition($index+1).y|number:0}}px;" ng-click="item.callback(data)">
+		<div>
+			<div>
+				<span class="{{item.icon}}"></span>
+			</div>
+		</div>
+	</div>
+</div>

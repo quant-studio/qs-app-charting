@@ -1,0 +1,10 @@
+{
+	"name": "arbiter",
+	"version": "1.0.0",
+	"main": [
+		"arbiter.js"
+	],
+	"dependencies":	{
+		"jquery":		"latest"
+	}
+}

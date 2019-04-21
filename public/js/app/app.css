@@ -1,0 +1,738 @@
+body {
+	height:	100%;
+}
+[ng-click] {
+	cursor:	pointer;
+}
+[app-charts] {
+	position:	absolute;
+	top:		0;
+	left:		0;
+	width:		100%;
+	height:		100%;
+}
+.app-charts {
+	width: 100%;
+	position: relative;
+	overflow-y: auto;
+}
+.app-charts .chart-controls > div {
+	position: absolute;
+	right: 40px;
+}
+.app-charts .chart-drop {
+	display: none;
+	/* $().show() on stock-chart.js */
+
+}
+.app-charts .chart-drop > div.drop {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background-color: rgba(79, 195, 247, 0.1);
+	text-align: center;
+	color: #ffffff;
+	font-weight: 700;
+}
+.app-charts .chart-drop > div.drop.add {
+	line-height: 50px;
+	background-color: rgba(79, 195, 247, 0.3);
+}
+.app-charts .chart-drop > div.drop.active {
+	background-color: rgba(79, 195, 247, 0.5);
+}
+
+
+
+
+.chart-types-selector {
+	padding: 5px;
+	text-align: center;
+}
+.chart-types-selector > div {
+	width: 50%;
+	display: inline-block;
+}
+.chart-types-selector > div > div {
+	margin: 5px;
+	position: relative;
+}
+.chart-types-selector > div > div > img {
+	width: 100%;
+	border-radius: 10px;
+}
+.chart-types-selector > div > div > div {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 5px;
+	font-size: 11px;
+	text-align: center;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 0 0 10px 10px;
+	display: table;
+	transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+.chart-types-selector > div > div > div > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.chart-types-selector > div:hover > div > div,
+.chart-types-selector > div.selected > div > div {
+	color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+}
+.chart-types-selector > div:hover > div > div > div,
+.chart-types-selector > div.selected > div > div > div {
+	display: table-cell;
+}
+
+
+
+
+
+
+.app-dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: table /*!important*/;
+	z-index: 51000;
+	/* navbar is 50000 */
+
+	transition: opacity ease-out 0.3s, transform ease-out 0.3s;
+	/* Dialog bg */
+
+}
+.app-dialog.ng-enter,
+.app-dialog.ng-leave.ng-leave-active {
+	opacity: 0;
+}
+.app-dialog.ng-leave,
+.app-dialog.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+.app-dialog.front {
+	z-index: 52000;
+}
+.app-dialog > .bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.app-dialog .overlay {
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+.app-dialog .overlay > div {
+	max-width: 500px;
+	padding: 60px;
+	margin: 0 auto;
+	/*overflow-y:		hidden;
+	overflow-x:		hidden;*/
+
+	text-align: left;
+	border-radius: 5px;
+}
+.app-dialog .overlay > div .dialog-close {
+	color: #ffffff;
+	text-align: right;
+	margin: 10px 0;
+	font-size: 12px;
+}
+.app-dialog .overlay.form > div {
+	max-width: 500px;
+}
+.app-dialog .overlay.medium > div {
+	max-width: 500px;
+}
+.app-dialog .overlay.large > div {
+	max-width: 800px;
+}
+.app-dialog.small > .overlay > div {
+	max-width: 400px;
+}
+.app-dialog.medium > .overlay > div {
+	max-width: 600px;
+}
+.app-dialog.large .overlay > div {
+	max-width: 800px;
+}
+.app-dialog.x-large > .overlay > div {
+	max-width: 90%;
+}
+
+
+
+
+
+.app-dialog-box {
+	background-color: #292b37;
+	border-radius: 0 0 5px 5px;
+}
+.app-dialog-box .message {
+	text-align: center;
+	padding: 3px;
+	font-size: 11px;
+	background-color: #508ed7;
+	color: #ffffff;
+}
+.app-dialog-box .message a {
+	font-size: 10px;
+	text-decoration: underline;
+}
+.app-dialog-box .header {
+	background-color: #1f2229;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 10px;
+	border-bottom: 1px solid #20222e;
+	border-radius: 5px 5px 0 0;
+	text-align: center;
+}
+.app-dialog-box .header > .author {
+	color: #1cc5bc;
+	font-size: 11px;
+	font-weight: 500;
+}
+.app-dialog-box .header.with-tabs {
+	position: relative;
+}
+.app-dialog-box .header.with-tabs .dialog-header-tabs {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.app-dialog-box .menu {
+	background-color: #2d2f3b;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 5px;
+	border-bottom: 1px solid #20222e;
+}
+.app-dialog-box .tabs {
+	background-color: #2d2f3b;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 5px;
+	border-bottom: 1px solid #20222e;
+	text-align: center;
+}
+.app-dialog-box .tabs > div {
+	display: inline-block;
+	padding: 5px 15px;
+	margin: 4px 0;
+	color: #b3b3b3;
+	border-bottom: 2px solid transparent;
+	/*transition:		border-bottom 0.2s linear, color 0.3s linear;*/
+
+}
+.app-dialog-box .tabs > div.selected {
+	border-bottom: 2px solid #508ed7;
+	color: #ffffff;
+}
+.app-dialog-box .tabs > div:hover {
+	color: #ffffff;
+}
+.app-dialog-box .tabs > div .tag {
+	font-size: 8px;
+}
+.app-dialog-box .body {
+	background-color: #292b37;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 10px;
+	border-bottom: 1px solid #20222e;
+	border-radius: 0 0 5px 5px;
+}
+.app-dialog-box .body.no-padding {
+	padding: 0;
+}
+.app-dialog-box.static-height .body {
+	height: 400px;
+	overflow-y: auto;
+}
+.app-dialog-box .text-block {
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 300;
+	padding: 10px;
+	text-align: justify;
+}
+.app-dialog-box .text-block.center {
+	text-align: center;
+}
+.app-dialog-box .text-block.right {
+	text-align: right;
+}
+.app-dialog-box .text-block a {
+	color: #508ed7;
+	text-decoration: underline;
+}
+.app-dialog-box .footer {
+	background-color: #508ed7;
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 600;
+	padding: 10px;
+	text-align: center;
+	border-radius: 5px;
+	margin: 5px 0;
+}
+.app-dialog-box .footer:last-child {
+	margin: 5px 0 0 0;
+}
+.app-dialog-box .footer:hover {
+	background-color: #3b81d2;
+}
+.app-dialog-box .footer.green {
+	background-color: #5bb85d;
+}
+.app-dialog-box .footer.green:hover {
+	background-color: #4bae4e;
+}
+.app-dialog-box .footer.disabled,
+.app-dialog-box .footer.disabled:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+	color: rgba(255, 255, 255, 0.2);
+	cursor: default;
+}
+.app-dialog-box .ctas {
+	display: table;
+	border-radius: 0 0 5px 5px;
+	width: 100%;
+}
+.app-dialog-box .ctas > div {
+	display: table-cell;
+	border-radius: 0;
+	background-color: #508ed7;
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 600;
+	padding: 10px;
+	text-align: center;
+}
+.app-dialog-box .ctas > div:hover {
+	background-color: #7aa9e0;
+}
+.app-dialog-box .ctas > div.green {
+	background-color: #5bb85d;
+}
+.app-dialog-box .ctas > div.green:hover {
+	background-color: #7fc780;
+}
+.app-dialog-box .ctas > div.red {
+	background-color: #D32F2F;
+}
+.app-dialog-box .ctas > div.red:hover {
+	background-color: #dc5959;
+}
+.app-dialog-box .ctas > div.gray {
+	background-color: #777777;
+}
+.app-dialog-box .ctas > div.gray:hover {
+	background-color: #919191;
+}
+.app-dialog-box .ctas > div:first-child {
+	border-radius: 0 0 0 5px;
+}
+.app-dialog-box .ctas > div:last-child {
+	border-radius: 0 0 5px 0;
+}
+
+.btn-round {
+	display: table;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	transition: background-color 0.3s linear, opacity 0.2s linear, left 0.2s linear, top 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
+}
+.btn-round > div {
+	display: table-cell;
+	border-radius: 50%;
+	vertical-align: middle;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	transition: background-color 0.3s linear, opacity 0.2s linear;
+}
+.btn-round > div > div {
+	display: block;
+	margin: 0 auto;
+	color: #ffffff;
+	font-weight: 600;
+	font-size:		15px;
+	line-height:	30px;
+}
+
+
+.menu-circle {
+	position: relative;
+}
+.menu-circle .btn-round {
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+.menu-circle .btn-round.child {
+	opacity: 0;
+	z-index: 5000;
+	transform: scale3d(0.2, 0.2, 0.2);
+}
+.menu-circle .btn-round.master {
+	z-index: 5200;
+}
+.menu-circle .btn-round.master > div {
+	opacity: 0.8;
+}
+.menu-circle:hover .btn-round.master > div {
+	opacity: 0.2;
+}
+.menu-circle:hover .btn-round.child {
+	opacity: 0.6;
+	transform: scale3d(1, 1, 1);
+}
+.menu-circle:hover .btn-round.child:hover {
+	opacity: 1;
+	transform: scale3d(1.2, 1.2, 1.2);
+	box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+	z-index: 5200;
+}
+
+
+div.table-list {
+	margin: 5px;
+}
+div.table-list.no-margin {
+	margin: 0;
+}
+div.table-list > div {
+	display: table;
+	border-radius: 10px;
+	width: 100%;
+}
+div.table-list > div > div {
+	display: table-row;
+	border-radius: 10px;
+}
+div.table-list > div > div > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+div.table-list > div > div > div,
+div.table-list > div > a > div {
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: 500;
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid transparent;
+}
+div.table-list > div > div > div:first-child,
+div.table-list > div > a > div:first-child {
+	font-weight: 700;
+	font-size: 13px;
+}
+div.table-list > div > div > div.center,
+div.table-list > div > a > div.center {
+	text-align: center;
+}
+div.table-list > div > div > div.icon,
+div.table-list > div > a > div.icon {
+	width: 85px;
+}
+div.table-list > div > div > div.small,
+div.table-list > div > a > div.small {
+	width: 100px;
+}
+div.table-list > div > div > div.medium,
+div.table-list > div > a > div.medium {
+	width: 300px;
+}
+div.table-list > div > div:hover > div,
+div.table-list > div > a:hover > div {
+	background-color: rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid #20222e;
+}
+div.table-list > div > div.selected > div,
+div.table-list > div > a.selected > div {
+	background-color: #4f5867;
+}
+div.table-list > div > div.header,
+div.table-list > div > a.header {
+	background-color: #1f2229;
+}
+div.table-list > div > div.header > div,
+div.table-list > div > a.header > div {
+	background-color: #1f2229;
+	font-size: 14px;
+	font-weight: 700;
+}
+div.table-list.description > div > div > div > div:last-child,
+div.table-list.description > div > a > div > div:last-child {
+	font-weight: 400;
+	font-size: 9px;
+}
+div.table-list.description > div > div > div > div:first-child,
+div.table-list.description > div > a > div > div:first-child {
+	font-size: 14px;
+	font-weight: 800;
+	margin-bottom: 5px;
+}
+
+.tiny-btn {
+	padding: 3px 5px;
+	font-size: 12px;
+	color: #ffffff;
+	border-radius: 5px;
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	text-align: center;
+	transition: background-color 0.2s linear;
+	white-space: nowrap;
+	background-color: rgba(80, 142, 215, 0);
+}
+.tiny-btn:hover {
+	background-color: rgba(80, 142, 215, 0.6);
+}
+.tiny-btn.red {
+	background-color: rgba(211, 47, 47, 0);
+}
+.tiny-btn.red:hover {
+	background-color: rgba(211, 47, 47, 0.6);
+}
+.tiny-btn.blue {
+	background-color: rgba(80, 142, 215, 0);
+}
+.tiny-btn.blue:hover {
+	background-color: rgba(80, 142, 215, 0.6);
+}
+
+
+.app-form {
+	display: table;
+	width: 100%;
+	/*background-color:	@color_panel;*/
+
+	margin-bottom: 20px;
+}
+.app-form > div {
+	display: table-row;
+}
+.app-form > div > div {
+	display: table-cell;
+	padding: 5px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #ffffff;
+	vertical-align: middle;
+}
+.app-form > div > div:first-child {
+	width: 180px;
+}
+.app-form > div > div .help {
+	font-size: 10px;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.5);
+}
+.app-form.large > div > div:first-child {
+	width: 250px;
+}
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=phone],
+textarea {
+	padding: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+	color: #333333;
+	font-size: 12px;
+	font-weight: 500;
+}
+input[type=text],
+input[type=password],
+textarea {
+	width: 100%;
+}
+input[type=number] {
+	width: 100px;
+}
+input[type=phone] {
+	width: 150px;
+}
+label > input {
+	vertical-align: top;
+}
+.split-50 {
+	width: 100%;
+}
+.split-50 > tbody > tr > td {
+	width: 50%;
+	vertical-align: top;
+}
+.split-50 > tbody > tr > td:first-child {
+	padding-right: 10px;
+}
+.split-50 > tbody > tr > td:last-child {
+	padding-left: 10px;
+}
+
+
+.ui-color .ui-color-preview {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+.ui-color .ui-color-picker-container {
+  position: relative;
+}
+.ui-color .ui-color-picker-container > .ui-color-dropdown {
+  position: absolute;
+  z-index: 5300;
+  right: -50px;
+  top: 0;
+  width: 400px;
+}
+
+
+
+.chart-tabs {
+  background-color: #2d2f3b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px;
+  border-bottom: 1px solid #20222e;
+  text-align: left;
+}
+.chart-tabs .del {
+	padding:		2px 4px;
+	font-size:		9px;
+	font-weight:	700;
+	border:			1px solid rgba(255,255,255,0.05);
+	color:			rgba(255,255,255,0.3);
+	display:		inline-block;
+	&:hover {
+		color:		rgba(255,255,255,0.8);
+	}
+}
+.chart-tabs input {
+	border:	0;
+	background-color: transparent;
+	display: inline-block;
+	font-size: 12px;
+	color: #ffffff;
+	width: 120px;
+}
+.chart-tabs > div {
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 4px 0;
+  text-align: center;
+  color: #b3b3b3;
+  border-bottom: 2px solid transparent;
+  /*transition:		border-bottom 0.2s linear, color 0.3s linear;*/
+
+}
+.chart-tabs > div.selected {
+  border-bottom: 2px solid #508ed7;
+  color: #ffffff;
+}
+.chart-tabs > div:hover {
+  color: #ffffff;
+}
+.chart-tabs > div .tag {
+  font-size: 8px;
+}
+
+
+
+.hover-menu {
+  position: relative;
+}
+.hover-menu .hover-menu-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  transform: scale(0.5, 0);
+  opacity: 0;
+  z-index: 50000;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: none;
+}
+.hover-menu .hover-menu-container > div,
+.hover-menu .hover-menu-container > span {
+  position: relative;
+}
+.hover-menu .hover-menu-container > div > .arrow,
+.hover-menu .hover-menu-container > span > .arrow {
+  position: absolute;
+  top: -5px;
+  left: -6px;
+  z-index: 50000;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+.hover-menu .hover-menu-container > div > .menu,
+.hover-menu .hover-menu-container > span > .menu {
+  position: absolute;
+  top: 0;
+  left: -13px;
+  z-index: 50000;
+  border-radius: 3px;
+  background-color: #ffffff;
+  padding-top: 4px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.hover-menu .hover-menu-container > div > .menu > div,
+.hover-menu .hover-menu-container > span > .menu > div {
+  white-space: nowrap;
+  color: #333333;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 4px;
+  text-align: left;
+  /*&:first-child {
+						border-radius:	3px 3px 0 0;
+					}*/
+
+}
+.hover-menu .hover-menu-container > div > .menu > div.selected,
+.hover-menu .hover-menu-container > span > .menu > div.selected {
+  background-color: rgba(30, 133, 224, 0.3);
+}
+.hover-menu .hover-menu-container > div > .menu > div:hover,
+.hover-menu .hover-menu-container > span > .menu > div:hover {
+  background-color: rgba(30, 133, 224, 0.2);
+}
+.hover-menu .hover-menu-container > div > .menu > div:last-child,
+.hover-menu .hover-menu-container > span > .menu > div:last-child {
+  border-radius: 0 0 3px 3px;
+}
+.hover-menu:hover .hover-menu-container {
+  transform: scale(1, 1);
+  opacity: 1;
+}

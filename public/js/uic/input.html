@@ -1,0 +1,102 @@
+<span>
+	<!-- Checkbox -->
+	<span ng-if="uiInput.type=='checkbox'" ng-click="ui.value=!ui.value">
+		<span ng-if="!ui.value">
+			<span class="fa fa-square"></span>
+		</span>
+		<span ng-if="ui.value">
+			<span class="fa fa-check-square"></span>
+		</span>
+	</span>
+	<!-- Form Inputs -->
+	<input type="text" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='input'||uiInput.type=='text'" />
+	<input type="text" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='variable'" ng-pattern="ui.variableRegex" />
+	<input type="password" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='password'" />
+	<input type="number" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='number'" />
+	<input type="phone" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='phone'" />
+	<input type="number" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='int'" />
+	<input type="number" ng-model="ui.value" placeholder="value" ng-if="uiInput.type=='float'" />
+	<!-- textarea -->
+	<textarea ng-if="uiInput.type=='textarea'" ng-model="ui.value" placeholder="value"></textarea>
+	<!-- List -->
+	<span ng-if="uiInput.type=='list'">
+		<span ui-dropdown="value" data="ui" options="uiInput.list"></span>
+	</span>
+	<!-- Color -->
+	<span ng-if="uiInput.type=='color'" ui-color="ui.value"></span>
+	<!-- version -->
+	<div class="app-version" ng-if="uiInput.type=='version'">
+		<div>
+			<div>
+				<div>Major</div>
+				<input type="number" ng-model="ui.value.major" placeholder="Major" />
+			</div>
+			<div>
+				<div>Minor</div>
+				<input type="number" ng-model="ui.value.minor" placeholder="Minor" />
+			</div>
+			<div>
+				<div>Build</div>
+				<input type="number" ng-model="ui.value.build" placeholder="Build" />
+			</div>
+		</div>
+	</div>
+	<!-- Image -->
+	<div ng-if="uiInput.type=='image'" class="image-upload">
+		<img ng-if="ui.value" ng-src="{{ui.value}}" />
+		<div>
+			<div id="image-upload-{{ui.id}}"></div>
+		</div>
+	</div>
+	<!-- OnOff Switch -->
+	<div ng-if="uiInput.type=='onOffSwitch'" class="on-off-switch">
+		<div class="on" ng-if="ui.value" ng-click="ui.value=!ui.value">
+			<div>
+				<div class="text">
+					{{uiInput.on}}
+				</div>
+				<div class="switchButton">
+					<div>
+						<span class="fas fa-check"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="off" ng-if="!ui.value" ng-click="ui.value=!ui.value">
+			<div>
+				<div class="switchButton">
+					<div>
+						<span class="fas fa-pause"></span>
+					</div>
+				</div>
+				<div class="text">
+					{{uiInput.off}}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Env -->
+	<div class="input-env" ng-if="uiInput.type=='env'">
+		<span ng-if="!env.loading">
+			<span ng-if="env.edit==false" ng-click="env.editEnv()">
+				<span class="fa fa-edit"></span>
+				{{env.getObfuscatedValue()}}
+			</span>
+			<input type="text" ng-model="ui.value" placeholder="value" ng-if="env.edit==true" ng-enter="env.saveEdit()" ng-blur="env.saveEdit()" />
+		</span>
+		<span ng-if="env.loading">
+			<span class="fa fa-spin fa-spinner"></span>
+			Please Wait...
+		</span>
+	</div>
+	
+	
+	<div class="text-error" ng-if="uiInput.error && uiInput.error()">
+		This variable name is already in use. It should be renamed.
+	</div>
+	<div class="text-error" ng-if="ui.error()">
+		{{ui.error()}}
+	</div>
+</span>
